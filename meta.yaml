@@ -1,0 +1,35 @@
+{% set name = "blender_python_utils" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: .
+
+requirements:
+  host:
+    - python
+    - numpy
+    - h5py
+  run:
+    - python
+    - numpy
+    - h5py
+
+test:
+  imports:
+    - blender_python_utils
+  commands:
+    - python -m unittest discover -s test
+
+about:
+  home: https://github.com/jhennies/blender-python-utils.git
+  license: GPLv3
+  license_family: GPL
+  summary: Utility library to handle data for rendering in Blender
+
+extra:
+  recipe-maintainers:
+    - jhennies
