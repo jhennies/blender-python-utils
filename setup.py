@@ -1,8 +1,7 @@
-# import runpy
-from setuptools import setup  #, find_packages
+import runpy
+from setuptools import setup, find_packages
 
-# version = runpy.run_path("blender_python_utils/__version__.py")["__version__"]
-version = '0.0.1'
+version = runpy.run_path("blender_python_utils/__version__.py")["__version__"]
 
 setup(
     name="blender_python_utils",
@@ -14,11 +13,12 @@ setup(
     entry_points={
         "console_scripts": [
             # "mobie.add_image = mobie.image_data:main"
-            "segmentation_to_objects = blender_python_utils.segmentation:segmentation_to_objects"
+            "split_segmentation = blender_python_utils.split_segmentation:main"
         ]
     },
     install_requires=[
         'numpy',
-        'h5py'
+        'h5py',
+        'scipy'
     ]
 )

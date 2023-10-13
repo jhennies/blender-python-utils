@@ -13,10 +13,12 @@ requirements:
     - python
     - numpy
     - h5py
+    - scipy
   run:
     - python
     - numpy
     - h5py
+    - scipy
 
 test:
   imports:
