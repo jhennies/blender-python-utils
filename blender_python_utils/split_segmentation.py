@@ -21,16 +21,23 @@ def binarize(volume, label):
     return volume.astype('float32')
 
 
-def smooth(volume, sigma):
-    if sigma == 0:
-        return volume
+def smooth(volume, sigma, pixel_spacing=None):
 
     import numpy as np
 
+    if sigma == 0:
+        return volume
+
     volume = volume.copy()
 
+    sigma = np.array([sigma] * 3)
+    if pixel_spacing is not None:
+        min_px_spacing = min(pixel_spacing)
+        sigma /= (np.array(pixel_spacing) / min_px_spacing)
+        logging.debug(f'sigma = {sigma}')
+
     # For the smoothing we need to pad the volumes a bit!
-    halo = np.array([np.ceil(sigma)] * 3).astype(int)
+    halo = np.array(np.ceil(sigma)).astype(int)
 
     in_vol = np.zeros((np.array(volume.shape) + 2 * halo).astype(int))
     in_vol[halo[0]:-halo[0], halo[1]:-halo[1], halo[2]:-halo[2]] = volume
@@ -87,7 +94,7 @@ def extract_object(
     # Binarize and smooth the object
     # Due to the smoothing the bounding volume becomes larger and the position has to be updated
     object_volume = binarize(object_volume, label)
-    object_volume, halo = smooth(object_volume, sigma)
+    object_volume, halo = smooth(object_volume, sigma, pixel_spacing=pixel_spacing)
     position_px -= halo
 
     # Save the object
@@ -168,9 +175,7 @@ def main():
     save_as = args.save_as
     verbose = args.verbose
 
-    # FIXME change this back!
-    # from .log_settings import set_logging
-    from log_settings import set_logging
+    from .log_settings import set_logging
 
     set_logging(verbose=verbose)
 
