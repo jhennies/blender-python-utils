@@ -3,6 +3,7 @@ import logging
 import os.path
 import numpy as np
 
+
 def smooth(volume, sigma, pixel_spacing=None):
 
     import numpy as np
@@ -96,7 +97,7 @@ def main():
     sigma = args.sigma
     verbose = args.verbose
 
-    from .log_settings import set_logging
+    from blender_python_utils.log_settings import set_logging
 
     set_logging(verbose=verbose)
 
