@@ -12,9 +12,9 @@ setup(
     license="GPLv3",
     entry_points={
         "console_scripts": [
-            # "mobie.add_image = mobie.image_data:main"
             "split_segmentation = blender_python_utils.split_segmentation:main",
-            "prepare_one_segmentation = blender_python_utils.prepare_one_segmentation:main"
+            "prepare_one_segmentation = blender_python_utils.prepare_one_segmentation:main",
+            "prepare_raw_data = blender_python_utils.prepare_raw_data:main"
         ]
     },
     install_requires=[
