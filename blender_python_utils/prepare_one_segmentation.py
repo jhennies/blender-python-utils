@@ -44,7 +44,7 @@ def prepare_one_segmentation(
     logging.info(f'input_filepath = {input_filepath}')
     logging.info(f'out_filepath = {out_filepath}')
 
-    from split_segmentation import load_segmentation
+    from blender_python_utils.split_segmentation import load_segmentation
 
     segmentation = load_segmentation(input_filepath, key=input_key)
 
