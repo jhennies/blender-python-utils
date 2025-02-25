@@ -1,16 +1,18 @@
-from h5py import File
+# from h5py import File
 import bpy
 import pyopenvdb as openvdb
 import os
 
-source = '/media/julian/Data/projects/khan/blender/data/raw_t69_c0.h5'
-proj_path = '/media/julian/Data/projects/khan/blender/data/'
+# source = '/media/julian/Data/projects/khan/blender/data/raw_t69_c0.h5'
+# proj_path = '/media/julian/Data/projects/khan/blender/data/'
+#
+# file_basename = os.path.splitext(os.path.split(source)[1])[0]
+# target = os.path.join(proj_path, f'{file_basename}.vbd')
+#
+# with File(source) as f:
+#     data = f['data'][:].astype('float') / 255
 
-file_basename = os.path.splitext(os.path.split(source)[1])[0]
-target = os.path.join(proj_path, f'{file_basename}.vbd')
-
-with File(source) as f:
-    data = f['data'][:].astype('float') / 255
+data = np.load('/g/schwab/Suzan')
 
 grid = openvdb.FloatGrid()
 grid.copyFromArray(data.astype(float))

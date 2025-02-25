@@ -5,9 +5,22 @@ import numpy as np
 
 
 def load_data(filepath, key='data'):
-    from h5py import File
-    with File(filepath, mode='r') as f:
-        return f[key][:]
+
+    ext = os.path.splitext(filepath)[1]
+
+    if ext == '.h5':
+
+        from h5py import File
+        with File(filepath, mode='r') as f:
+            return f[key][:]
+
+    if ext == '.n5':
+
+        from z5py import File
+        with File(filepath, mode='r') as f:
+            return f[key][:]
+
+    raise ValueError(f'Invalid file extension: {ext}')
 
 
 def save_volume(volume, filepath):
