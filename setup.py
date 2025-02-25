@@ -13,7 +13,8 @@ setup(
     entry_points={
         "console_scripts": [
             # "mobie.add_image = mobie.image_data:main"
-            "split_segmentation = blender_python_utils.split_segmentation:main"
+            "split_segmentation = blender_python_utils.split_segmentation:main",
+            "prepare_one_segmentation = blender_python_utils.prepare_one_segmentation:main"
         ]
     },
     install_requires=[
