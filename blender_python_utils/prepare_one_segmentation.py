@@ -73,7 +73,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Split a segmentation into individual objects that can be imported into Blender',
+        description='Convert a segmentation into a mesh that can be imported into blender',
         formatter_class=argparse.RawTextHelpFormatter
     )
     parser.add_argument('input_filepath', type=str,
