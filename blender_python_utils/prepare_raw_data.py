@@ -42,7 +42,7 @@ def prepare_raw_data(
     data = load_data(input_filepath, input_key)
 
     out_dirpath = os.path.split(out_filepath)[0]
-    if not os.path.exists(out_dirpath):
+    if out_dirpath and not os.path.exists(out_dirpath):
         os.mkdir(out_dirpath)
 
     if sigma is not None:
